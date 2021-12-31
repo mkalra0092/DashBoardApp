@@ -18,6 +18,8 @@ public class CustomerController {
 
 	@PostMapping("/add")
 	public String processCustomerForm(Customer customer, RedirectAttributes modelMap) {
+		
+		
 		return "redirect:/customer/add";
 	}
 

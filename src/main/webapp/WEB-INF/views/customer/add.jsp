@@ -18,7 +18,7 @@
 			</tr>
 			<tr>
 				<td>City :</td>
-				<td><form:input path="branch_id.branch_name" /></td>
+				<td><form:input path="branchId.branchName" /></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Show AQI" /></td>

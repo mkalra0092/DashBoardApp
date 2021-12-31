@@ -17,19 +17,61 @@
 	<h3 align="center">
 		<spring:message code="u.mesg" />
 	</h3>
+	<h5 style="color: green;">${requestScope.status}</h5>
+	<form method="post">
+		<table style="background-color: cyan; margin: auto;">
 
-
-	<%-- <h5 align="center" style="color: red;">
-		<spring:message code="u.role" />
-	</h5> --%>
+			<tr>
+				<td>Enter User Name :</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>Enter User City :</td>
+				<td><input type="text" name="city"></td>
+			</tr>
+			<tr>
+				<td>Enter Date :</td>
+				<td><input type="date" name="dt"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="submit"></td>
+		</table>
+	</form>
 	<br>
-	<br>
-	
 	<h4>
 		<a href='<spring:url value="/customer/add"/>'>Add New Customer
 			Details</a>
 	</h4>
 	<br>
+	<hr>
+	<br>
+	<h2>AQI :</h2>
+	<table style="background-color: orange; margin: auto;">
+		<caption>Showing data from date :
+			${sessionScope.aqi_dtls.dateTime}</caption>
+		<tr>
+			<th>CO2</th>
+			<th>Temperature</th>
+			<th>Humidity</th>
+			<th>PM2.5</th>
+			<th>PM10</th>
+			<th>TVOC</th>
+
+		</tr>
+		<tr>
+			<td>${sessionScope.aqi_dtls.pMaster.co2}</td>
+			<td>${sessionScope.aqi_dtls.pMaster.temp}</td>
+			<td>${sessionScope.aqi_dtls.pMaster.humidity}</td>
+			<td>${sessionScope.aqi_dtls.pMaster.pm2}</td>
+			<td>${sessionScope.aqi_dtls.pMaster.pm10}</td>
+			<td>${sessionScope.aqi_dtls.pMaster.tvoc}</td>
+		</tr>
+	</table>
+
+	<h4>
+		<a href='<spring:url value="/threshold/update"/>'>Update Lower and
+			Upper Threshold Units</a>
+	</h4>
 	<br>
 	<br>
 	<br>
