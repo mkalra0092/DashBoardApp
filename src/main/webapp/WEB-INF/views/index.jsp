@@ -14,9 +14,10 @@
 <body style="background: url(../img/Background.jpg)">
 	<img class="img-responsive" width="100%" height="180px"
 		src="/img/1.jpg">
-	<h3 align="center">
+	<h3>GITHUB REPO : https://github.com/mkalra0092/DashBoardApp.git</h3>
+	<h2 align="center">
 		<spring:message code="u.mesg" />
-	</h3>
+	</h2>
 	<h5 style="color: green;">${requestScope.status}</h5>
 	<form method="post">
 		<table style="background-color: cyan; margin: auto;">
