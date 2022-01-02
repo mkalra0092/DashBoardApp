@@ -1,11 +1,15 @@
 package com.hygiene.pojos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,10 +27,10 @@ public class ParameterMaster {
 	private int pm10;
 	private int tvoc;
 
-	@OneToOne(mappedBy = "pLowThd", cascade = CascadeType.ALL)
-	private ParameterThreshold lowerList;
-	@OneToOne(mappedBy = "pUppThd", cascade = CascadeType.ALL)
-	private ParameterThreshold upperList;
+	@OneToMany(mappedBy = "pLowThd", cascade = CascadeType.ALL)
+	private List<ParameterThreshold> lowerList = new ArrayList<>();
+	@OneToMany(mappedBy = "pUppThd", cascade = CascadeType.ALL)
+	private List<ParameterThreshold> upperList = new ArrayList<>();
 
 	@OneToOne(mappedBy = "pMaster")
 	private AQIDate aqiDate;
@@ -91,19 +95,19 @@ public class ParameterMaster {
 		this.tvoc = tvoc;
 	}
 
-	public ParameterThreshold getLowerList() {
+	public List<ParameterThreshold> getLowerList() {
 		return lowerList;
 	}
 
-	public void setLowerList(ParameterThreshold lowerList) {
+	public void setLowerList(List<ParameterThreshold> lowerList) {
 		this.lowerList = lowerList;
 	}
 
-	public ParameterThreshold getUpperList() {
+	public List<ParameterThreshold> getUpperList() {
 		return upperList;
 	}
 
-	public void setUpperList(ParameterThreshold upperList) {
+	public void setUpperList(List<ParameterThreshold> upperList) {
 		this.upperList = upperList;
 	}
 

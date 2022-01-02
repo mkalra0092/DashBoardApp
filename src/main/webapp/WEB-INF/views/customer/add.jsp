@@ -14,14 +14,14 @@
 		<table style="background-color: cyan; margin: auto;">
 			<tr>
 				<td>Name :</td>
-				<td><form:input path="cust_name" /></td>
+				<td><form:input path="custName" /></td>
 			</tr>
 			<tr>
 				<td>City :</td>
 				<td><form:input path="branchId.branchName" /></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="Show AQI" /></td>
+				<td><input type="submit" value="Add Customer" /></td>
 			</tr>
 		</table>
 	</form:form>

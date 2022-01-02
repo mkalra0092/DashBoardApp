@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +27,10 @@
 				<td><input type="text" name="name"></td>
 			</tr>
 			<tr>
+				<td>Enter Phone :</td>
+				<td><input type="text" name="phone"></td>
+			</tr>
+			<tr>
 				<td>Enter User City :</td>
 				<td><input type="text" name="city"></td>
 			</tr>
@@ -38,6 +42,7 @@
 				<td><input type="submit" value="submit"></td>
 		</table>
 	</form>
+	
 	<br>
 	<h4>
 		<a href='<spring:url value="/customer/add"/>'>Add New Customer
@@ -59,14 +64,16 @@
 			<th>TVOC</th>
 
 		</tr>
-		<tr>
-			<td>${sessionScope.aqi_dtls.pMaster.co2}</td>
-			<td>${sessionScope.aqi_dtls.pMaster.temp}</td>
-			<td>${sessionScope.aqi_dtls.pMaster.humidity}</td>
-			<td>${sessionScope.aqi_dtls.pMaster.pm2}</td>
-			<td>${sessionScope.aqi_dtls.pMaster.pm10}</td>
-			<td>${sessionScope.aqi_dtls.pMaster.tvoc}</td>
+		<c:forEach var="a" items="${sessionScope.list_all}">
+		<tr >
+			<td>${a.pMaster.co2}</td>
+			<td>${a.pMaster.temp}</td>
+			<td>${a.pMaster.humidity}</td>
+			<td>${a.pMaster.pm2}</td>
+			<td>${a.pMaster.pm10}</td>
+			<td>${a.pMaster.tvoc}</td>
 		</tr>
+		</c:forEach>
 	</table>
 
 	<h4>

@@ -13,6 +13,17 @@ public class Customer {
 	private Integer custId;
 	@Column(length = 30)
 	private String custName;
+	
+	@Column(length = 10)
+	private String phone;
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "b_id")

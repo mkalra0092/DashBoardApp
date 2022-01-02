@@ -1,6 +1,7 @@
 package com.hygiene.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,21 +22,22 @@ import com.hygiene.pojos.Customer;
 
 @Controller
 public class HomePageController {
+	
 	@Autowired
 	private CustomerRepository crepo;
 	@Autowired
 	private BranchRepository brepo;
-
 	@Autowired
 	private AQIRepository aqirepo;
-
+	
+	
 	@RequestMapping("/")
 	public String showDetails() {
 		return "/index";
 	}
 
 	@PostMapping("/")
-	public String processDetails(@RequestParam String name, @RequestParam String city,
+	public String processDetails(@RequestParam String name, @RequestParam String city, @RequestParam String phone,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date dt, HttpSession hs,
 			RedirectAttributes flashMap) {
 		Customer c1 = crepo.findByCustName(name);
@@ -44,12 +46,18 @@ public class HomePageController {
 		System.out.println(b1);
 
 		AQIDate aqi1 = aqirepo.findByDateTime(dt);
+		List<AQIDate> list_aqi = aqirepo.findAll();
 		System.out.println(aqi1);
+		System.out.println(list_aqi);
 
 		String status = "No User Found !!";
 
 		if (c1.getBranchId().getBranchId() == b1.getBranchId()) {
-			hs.setAttribute("aqi_dtls", aqi1);
+
+			if (aqi1 == null) {
+				hs.setAttribute("list_all", list_aqi);
+			} else
+				hs.setAttribute("aqi_dtls", aqi1);
 			status = "User in the List !!";
 
 		}

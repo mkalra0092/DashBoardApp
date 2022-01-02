@@ -10,11 +10,11 @@ public class ParameterThreshold {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer paramId;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "pLow_thd")
 	private ParameterMaster pLowThd;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "pUpp_thd")
 	private ParameterMaster pUppThd;
 
